@@ -1,9 +1,11 @@
-import requests
 from bs4 import BeautifulSoup
 import csv
-import time
-import random
 import os
+import platform
+import random
+import requests
+import subprocess
+import time
 
 ids = random.sample(range(1, 8735), 5)
 
@@ -73,3 +75,6 @@ with open(csv_file, "a", newline='', encoding='utf-8') as f:
             print(f"[{manga_id}] No data found or skipped.")
         
         time.sleep(random.uniform(0.7, 1.3))  # polite delay
+
+if platform.system() == "Windows":
+    subprocess.Popen(['notepad.exe', csv_file])
